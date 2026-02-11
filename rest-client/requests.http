@@ -1,5 +1,10 @@
 @baseUrl = http://localhost:3000
 
-GET {{baseUrl}}
-###
+### Auth Login
+# @name authLogin
 POST {{baseUrl}}/auth/login
+
+{
+    "email": "lucrades@gmail.com",
+    "password": "123"
+}
