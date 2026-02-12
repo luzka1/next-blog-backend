@@ -3,8 +3,14 @@
 ### Auth Login
 # @name authLogin
 POST {{baseUrl}}/auth/login
+Content-Type: application/json
 
 {
-    "email": "lucrades@gmail.com",
-    "password": "123"
+    "email": "user@email.com",
+    "password": "1",
+    "chave": "não deveria estar aqui"
 }
+
+### Read one user
+# @name readOneUser
+GET {{baseUrl}}/user/321
