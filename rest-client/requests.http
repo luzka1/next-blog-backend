@@ -6,11 +6,21 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "user@email.com",
-    "password": "1",
-    "chave": "não deveria estar aqui"
+    "email": "lucas@email.com",
+    "password": "123"
 }
 
 ### Read one user
 # @name readOneUser
-GET {{baseUrl}}/user/321
+GET {{baseUrl}}/user/123
+
+### Create User
+# @name createUser
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+    "name": "luketa",
+    "email": "lucas@email.com",
+    "password": "123"
+}
