@@ -26,3 +26,13 @@ Content-Type: application/json
     "email": "lucas@email.com",
     "password": "123"
 }
+
+### Create User
+# @name updateUSer
+POST {{baseUrl}}/user/me
+Content-Type: application/json
+
+{
+    "name": "luketa",
+    "email": "lucas@email.com"
+}
