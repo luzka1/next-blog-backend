@@ -7,13 +7,13 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "lucas@email.com",
+    "email": "Lucase@gmail.com",
     "password": "123"
 }
 
 ### Read one user
 # @name readOneUser
-GET {{baseUrl}}/user/123
+GET {{baseUrl}}/user/Lucase@gail.com
 Authorization: Bearer {{userToken}}
 
 ### Create User
@@ -27,12 +27,12 @@ Content-Type: application/json
     "password": "123"
 }
 
-### Create User
+### Update User
 # @name updateUSer
-POST {{baseUrl}}/user/me
+PATCH {{baseUrl}}/user/me
 Content-Type: application/json
+Authorization: Bearer {{userToken}}
 
 {
-    "name": "luketa",
-    "email": "lucas@email.com"
+   "email": "Lucase@gmail.com"
 }

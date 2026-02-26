@@ -8,7 +8,6 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { CustomParseIntPipe } from 'src/common/pipes/custom-parse-int-pipe.pipe';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
@@ -18,19 +17,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Get(':id')
-  findOne(
-    @Req() req: AuthenticatedRequest,
-    @Param('id', CustomParseIntPipe) id: number,
-  ) {
-    console.log(req.user.id);
-    return `Olá usuario ${id}, tudo bem?`;
+  @Get(':email')
+  findOne(@Param('email') email: string) {
+    return this.userService.findByEmail(email);
   }
 
   @Post()
@@ -38,8 +30,9 @@ export class UserController {
     return this.userService.create(dto);
   }
 
-  @Patch()
-  update(@Body() dto: UpdateUserDto) {
-    return this.userService.create(dto);
+  @UseGuards(JwtAuthGuard)
+  @Patch('/me')
+  update(@Req() req: AuthenticatedRequest, @Body() dto: UpdateUserDto) {
+    return this.userService.update(req.user.id, dto);
   }
 }
